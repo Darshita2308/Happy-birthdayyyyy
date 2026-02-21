@@ -1,5 +1,5 @@
 // ========================================
-// Naina's 21st Birthday Website JavaScript
+// Billu's 21st Birthday Website JavaScript
 // ========================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -333,7 +333,7 @@ window.addEventListener('load', function() {
         
         greeting.innerHTML = `
             <h2 style="font-family: 'Dancing Script', cursive; font-size: 3rem; margin-bottom: 20px;">
-                🎉 Happy 21st Birthday Naina! 🎂
+                🎉 Happy 24st Birthday Billu (Palak)! 🎂
             </h2>
             <p style="font-size: 1.2rem; margin-bottom: 20px;">
                 Wishing you a day filled with love, laughter, and all your heart desires!
@@ -371,5 +371,5 @@ window.addEventListener('load', function() {
     }, 1500);
 });
 
-console.log('🎉 Happy 21st Birthday Naina! 🎂');
+console.log('🎉 Happy 21st Birthday Billu (Palak)! 🎂');
 console.log('Made with love 💕');
