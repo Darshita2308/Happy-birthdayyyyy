@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize hamburger menu
     initHamburgerMenu();
     
+    // Initialize cake cutting
+    initCakeCutting();
+    
     // Initialize gallery tabs
     initGalleryTabs();
     
@@ -50,6 +53,21 @@ function initHamburgerMenu() {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
             }
+        });
+    }
+}
+
+// ========================================
+// Cake Cutting Functionality
+// ========================================
+function initCakeCutting() {
+    const cakeContainer = document.querySelector('.cake-container');
+    
+    if (cakeContainer) {
+        cakeContainer.addEventListener('click', cutCake);
+        cakeContainer.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            cutCake();
         });
     }
 }
@@ -232,12 +250,12 @@ function initScrollEffects() {
 // ========================================
 function cutCake() {
     const cakeContainer = document.querySelector('.cake-container');
-    const cakeMessage = document.getElementById('cake-message');
-    const cakePieces = document.getElementById('cake-pieces');
+    const cakeMessage = document.querySelector('.cake-message');
+    const cakePieces = document.querySelector('.cake-pieces');
     const candles = document.querySelectorAll('.candle-flame');
     
     // Check if already cut
-    if (cakeContainer.classList.contains('cut')) {
+    if (!cakeContainer || cakeContainer.classList.contains('cut')) {
         return;
     }
     
@@ -252,7 +270,9 @@ function cutCake() {
     
     // Show message after animation
     setTimeout(() => {
-        cakeMessage.classList.add('show');
+        if (cakeMessage) {
+            cakeMessage.classList.add('show');
+        }
         
         // Create mini confetti burst
         createConfetti();
@@ -262,7 +282,9 @@ function cutCake() {
     
     // Show cake pieces
     setTimeout(() => {
-        cakePieces.classList.add('show');
+        if (cakePieces) {
+            cakePieces.classList.add('show');
+        }
     }, 1500);
 }
 
@@ -367,12 +389,12 @@ window.addEventListener('load', function() {
         `;
         
         greeting.innerHTML = `
-            <h2 style="font-family: 'Dancing Script', cursive; font-size: 3rem; margin-bottom: 20px;">
-                🎉 Happy 24st Birthday Billu (Palak)! 🎂
+            <h2 style="font-family: 'Dancing Script', cursive; font-size: clamp(1.8rem, 6vw, 3rem); margin-bottom: 20px;">
+                🎉 Happy 24th Birthday Billu (Palak)! 🎂
             </h2>
             <p style="font-size: 1.2rem; margin-bottom: 20px;">
                 Wishing you a day filled with love, laughter, and all your heart desires!
-            </p>
+            </h2>
             <button onclick="this.parentElement.remove()" style="
                 background: white;
                 color: #FF1493;
@@ -406,5 +428,5 @@ window.addEventListener('load', function() {
     }, 1500);
 });
 
-console.log('🎉 Happy 21st Birthday Billu (Palak)! 🎂');
+console.log('🎉 Happy 24th Birthday Billu (Palak)! 🎂');
 console.log('Made with love 💕');
