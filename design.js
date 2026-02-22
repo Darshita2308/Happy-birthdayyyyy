@@ -246,46 +246,23 @@ function initScrollEffects() {
 }
 
 // ========================================
-// Cake Cutting Function
+// Cake Cutting Function - Only blows out candles
 // ========================================
 function cutCake() {
     const cakeContainer = document.querySelector('.cake-container');
-    const cakeMessage = document.querySelector('.cake-message');
-    const cakePieces = document.querySelector('.cake-pieces');
-    const candles = document.querySelectorAll('.candle-flame');
     
     // Check if already cut
     if (!cakeContainer || cakeContainer.classList.contains('cut')) {
         return;
     }
     
-    // Add cut class
+    // Add cut class - this will hide the flames via CSS
     cakeContainer.classList.add('cut');
     
-    // Blow out candles
-    candles.forEach(candle => {
-        candle.style.animation = 'none';
-        candle.style.opacity = '0';
-    });
-    
-    // Show message after animation
-    setTimeout(() => {
-        if (cakeMessage) {
-            cakeMessage.classList.add('show');
-        }
-        
-        // Create mini confetti burst
-        createConfetti();
-        setTimeout(createConfetti, 500);
-        setTimeout(createConfetti, 1000);
-    }, 1000);
-    
-    // Show cake pieces
-    setTimeout(() => {
-        if (cakePieces) {
-            cakePieces.classList.add('show');
-        }
-    }, 1500);
+    // Create confetti celebration
+    createConfetti();
+    setTimeout(createConfetti, 500);
+    setTimeout(createConfetti, 1000);
 }
 
 // ========================================
@@ -367,65 +344,72 @@ function createFloatingHearts() {
 createFloatingHearts();
 
 // ========================================
-// Birthday Message Alert
+// Birthday Message Alert - Single Message with Close Button
 // ========================================
-window.addEventListener('load', function() {
+
+function showBirthdayMessage() {
+    // Check if already showing
+    const existingGreeting = document.getElementById('birthday-greeting');
+    if (existingGreeting) return;
+    
+    const greeting = document.createElement('div');
+    greeting.id = 'birthday-greeting';
+    
+    greeting.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #FF69B4, #FF1493);
+        color: white;
+        padding: 25px 35px;
+        border-radius: 20px;
+        text-align: center;
+        z-index: 10000;
+        box-shadow: 0 20px 60px rgba(255, 105, 180, 0.5);
+        max-width: 90%;
+        width: 320px;
+    `;
+    
+    greeting.innerHTML = `
+        <h2 style="font-family: 'Dancing Script', cursive; font-size: 1.8rem; margin-bottom: 15px;">
+            🎉 Happy 24th Birthday Billu (Palak)! 🎂
+        </h2>
+        <p style="font-size: 1rem; margin-bottom: 20px;">
+            Wishing you a day filled with love, laughter, and all your heart desires!
+        </p>
+        <button id="close-btn" style="
+            background: white;
+            color: #FF1493;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+        ">
+            Close
+        </button>
+    `;
+    
+    document.body.appendChild(greeting);
+    
+    // Add click event to close button
+    document.getElementById('close-btn').addEventListener('click', function() {
+        const g = document.getElementById('birthday-greeting');
+        if (g) g.remove();
+    });
+    
+    // Auto close after 8 seconds
     setTimeout(() => {
-        const greeting = document.createElement('div');
-        greeting.id = 'birthday-greeting';
-        greeting.style.cssText = `
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #FF69B4, #FF1493);
-            color: white;
-            padding: 40px 60px;
-            border-radius: 20px;
-            text-align: center;
-            z-index: 10000;
-            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.5);
-            animation: popIn 0.5s ease;
-        `;
-        
-        greeting.innerHTML = `
-            <h2 style="font-family: 'Dancing Script', cursive; font-size: clamp(1.8rem, 6vw, 3rem); margin-bottom: 20px;">
-                🎉 Happy 24th Birthday Billu (Palak)! 🎂
-            </h2>
-            <p style="font-size: 1.2rem; margin-bottom: 20px;">
-                Wishing you a day filled with love, laughter, and all your heart desires!
-            </h2>
-            <button onclick="this.parentElement.remove()" style="
-                background: white;
-                color: #FF1493;
-                border: none;
-                padding: 12px 30px;
-                border-radius: 25px;
-                font-size: 1rem;
-                cursor: pointer;
-                font-weight: bold;
-            ">
-                Thank You! 💕
-            </button>
-        `;
-        
-        document.body.appendChild(greeting);
-        
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes popIn {
-                0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-                100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        setTimeout(() => {
-            if (greeting.parentElement) {
-                greeting.remove();
-            }
-        }, 10000);
-    }, 1500);
+        const g = document.getElementById('birthday-greeting');
+        if (g) g.remove();
+    }, 8000);
+}
+
+// Initialize birthday message on load
+window.addEventListener('load', function() {
+    setTimeout(showBirthdayMessage, 1500);
 });
 
 console.log('🎉 Happy 24th Birthday Billu (Palak)! 🎂');
