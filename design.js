@@ -1,10 +1,13 @@
 // ========================================
-// Billu's 21st Birthday Website JavaScript
+// Billu's 24th Birthday Website JavaScript
 // ========================================
 
 document.addEventListener('DOMContentLoaded', function() {
     // Start confetti effect
     createConfetti();
+    
+    // Initialize hamburger menu
+    initHamburgerMenu();
     
     // Initialize gallery tabs
     initGalleryTabs();
@@ -18,6 +21,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add scroll effects
     initScrollEffects();
 });
+
+// ========================================
+// Hamburger Menu Functionality
+// ========================================
+function initHamburgerMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinksItems = document.querySelectorAll('.nav-links a');
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    }
+}
 
 // ========================================
 // Confetti Effect
