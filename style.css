@@ -59,27 +59,43 @@ header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; backgroun
 .wish-card h3 { color: var(--dark-pink); font-size: 1.2rem; margin-bottom: 8px; font-family: 'Dancing Script', cursive; }
 .wish-card p { color: var(--grey-medium); line-height: 1.5; margin-bottom: 8px; font-size: 0.9rem; }
 .party-section { padding: 40px 0; background: linear-gradient(135deg, #1a1a2e, #16213e); }
-.party-scene { position: relative; min-height: 300px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.disco-container { text-align: center; position: relative; width: 100%; max-width: 400px; margin: 0 auto; }
-.disco-ball { width: clamp(35px, 10vw, 50px); height: clamp(35px, 10vw, 50px); background: linear-gradient(135deg, silver, #fff); border-radius: 50%; margin: 0 auto 15px; animation: spin 2s linear infinite; }
+.party-scene { position: relative; min-height: 320px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 20px; }
+.disco-container { text-align: center; position: relative; width: 100%; max-width: 350px; margin: 0 auto; }
+.disco-ball { width: clamp(40px, 12vw, 60px); height: clamp(40px, 12vw, 60px); background: linear-gradient(135deg, silver, #fff); border-radius: 50%; margin: 0 auto 20px; animation: spin 2s linear infinite; }
 @keyframes spin { 100% { transform: rotate(360deg); } }
-.dancers-container { display: flex; justify-content: center; align-items: flex-end; gap: clamp(8px, 3vw, 15px); margin: 15px 0; }
+.dancers-container { display: flex; justify-content: center; align-items: flex-end; gap: clamp(20px, 8vw, 40px); margin: 25px 0; }
 .dancer-emoji { display: flex; flex-direction: column; align-items: center; animation: dance 0.8s infinite alternate; }
 @keyframes dance { 0% { transform: translateY(0); } 100% { transform: translateY(-10px); } }
-.dancer-avatar { font-size: clamp(1.5rem, 6vw, 2rem); }
-.dancer-crown { font-size: clamp(1rem, 4vw, 1.3rem); margin-top: -10px; }
-.dancer-name { color: var(--white); font-weight: 600; font-size: clamp(0.6rem, 2.5vw, 0.75rem); margin-top: 2px; }
-.party-text { color: var(--white); font-size: clamp(1rem, 4vw, 1.3rem); font-family: 'Dancing Script', cursive; margin-top: 10px; }
+.dancer-avatar { font-size: clamp(3rem, 15vw, 5rem); }
+.dancer-crown { font-size: clamp(1.8rem, 8vw, 2.5rem); margin-top: -18px; }
+.dancer-name { color: var(--white); font-weight: 600; font-size: clamp(0.9rem, 3.5vw, 1.2rem); margin-top: 5px; }
+.party-text { color: var(--white); font-size: clamp(1.2rem, 5vw, 1.8rem); font-family: 'Dancing Script', cursive; margin-top: 15px; }
+
+/* Disco Lights Animation */
+.disco-lights { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; }
+.light { position: absolute; width: 100%; height: 100%; opacity: 0; animation: disco-light 2s infinite; }
+.light-1 { background: radial-gradient(circle, rgba(255,0,0,0.3) 0%, transparent 70%); animation-delay: 0s; }
+.light-2 { background: radial-gradient(circle, rgba(0,255,0,0.3) 0%, transparent 70%); animation-delay: 0.5s; }
+.light-3 { background: radial-gradient(circle, rgba(0,0,255,0.3) 0%, transparent 70%); animation-delay: 1s; }
+@keyframes disco-light { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+.party-poppers { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; }
+.popper { position: absolute; font-size: clamp(1.5rem, 5vw, 2.5rem); animation: popper-float 3s infinite; }
+.popper-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.popper-2 { top: 20%; right: 15%; animation-delay: 0.5s; }
+.popper-3 { bottom: 30%; left: 5%; animation-delay: 1s; }
+.popper-4 { bottom: 20%; right: 10%; animation-delay: 1.5s; }
+@keyframes popper-float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(10deg); } }
+
 .cake-section { padding: 40px 0; background: var(--soft-pink); }
 .cake-scene { text-align: center; padding: 0 10px; }
-.cake-container { display: inline-block; position: relative; cursor: pointer; transform: scale(0.85); transform-origin: center top; transition: transform 0.3s ease; }
-.cake-container:active { transform: scale(0.85) scale(0.95); }
+.cake-container { display: inline-block; position: relative; cursor: pointer; transform: scale(0.8); transform-origin: center top; transition: transform 0.3s ease; }
+.cake-container:active { transform: scale(0.8) scale(0.95); }
 .cake-container.cut .cake { opacity: 0; visibility: hidden; }
 .cake-container.cut .knife { animation: cut-knife 0.5s ease forwards; }
 @keyframes cut-knife {
     0% { transform: translateX(0) rotate(0deg); }
-    50% { transform: translateX(-80px) rotate(-15deg); }
-    100% { transform: translateX(-80px) rotate(0deg); }
+    50% { transform: translateX(-90px) rotate(-20deg); }
+    100% { transform: translateX(-90px) rotate(0deg); }
 }
 .cake { position: relative; width: 160px; transition: opacity 0.5s ease; }
 .cake-top { width: 160px; height: 45px; background: linear-gradient(135deg, #ff69b4, #ff1493); border-radius: 50% 50% 0 0; position: relative; display: flex; justify-content: center; }
@@ -92,7 +108,7 @@ header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; backgroun
 .cake-layer-2 { width: 125px; }
 .cake-layer-1 { width: 105px; }
 .cake-plate { width: 170px; height: 10px; background: silver; margin: 8px auto; border-radius: 50%; }
-.knife { font-size: 2rem; position: absolute; right: -32px; top: 40%; }
+.knife { font-size: 2rem; position: absolute; right: -35px; top: 40%; }
 .cake-message { display: none; margin-top: 15px; }
 .cake-message.show { display: block; }
 .cake-message h3 { color: var(--dark-pink); font-size: 1.3rem; font-family: 'Dancing Script', cursive; }
@@ -122,10 +138,10 @@ header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; backgroun
 .gallery-tab-content { display: none; }
 .gallery-tab-content.active { display: block; }
 .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0 10px; }
-.photo-card { border-radius: 10px; overflow: hidden; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
-.photo-placeholder { height: clamp(120px, 35vw, 180px); display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--light-pink), var(--primary-pink)); }
-.photo-placeholder img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
-.photo-placeholder span { font-size: clamp(1.5rem, 6vw, 2.5rem); color: var(--white); }
+.photo-card { border-radius: 10px; overflow: hidden; box-shadow: 0 3px 8px rgba(0,0,0,0.1); aspect-ratio: 1 / 1; }
+.photo-placeholder { height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--light-pink), var(--primary-pink)); position: relative; }
+.photo-placeholder img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+.photo-placeholder span { font-size: clamp(2rem, 8vw, 3rem); color: var(--white); }
 .photo-placeholder p { font-size: 0.8rem; font-weight: 500; color: var(--white); margin-top: 5px; text-align: center; }
 .vintage-letter { max-width: 100%; margin: 0 10px; background: #f5f0e1; padding: 15px; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); font-size: 0.8rem; }
 .letter-envelope { text-align: center; margin-bottom: 10px; }
@@ -157,32 +173,17 @@ footer { background: var(--grey-dark); color: var(--white); padding: 25px 15px; 
 .footer-icons { font-size: 1.5rem; }
 .footer-icons span { margin: 0 5px; }
 
-/* Disco Lights Animation */
-.disco-lights { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; }
-.light { position: absolute; width: 100%; height: 100%; opacity: 0; animation: disco-light 2s infinite; }
-.light-1 { background: radial-gradient(circle, rgba(255,0,0,0.3) 0%, transparent 70%); animation-delay: 0s; }
-.light-2 { background: radial-gradient(circle, rgba(0,255,0,0.3) 0%, transparent 70%); animation-delay: 0.5s; }
-.light-3 { background: radial-gradient(circle, rgba(0,0,255,0.3) 0%, transparent 70%); animation-delay: 1s; }
-@keyframes disco-light { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
-.party-poppers { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; }
-.popper { position: absolute; font-size: 1.5rem; animation: popper-float 3s infinite; }
-.popper-1 { top: 10%; left: 10%; animation-delay: 0s; }
-.popper-2 { top: 20%; right: 15%; animation-delay: 0.5s; }
-.popper-3 { bottom: 30%; left: 5%; animation-delay: 1s; }
-.popper-4 { bottom: 20%; right: 10%; animation-delay: 1.5s; }
-@keyframes popper-float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(10deg); } }
-
 /* Animations */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes bounce { 0%,20%,50%,80%,100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
 
 /* Extra Small Devices */
 @media (max-width: 380px) {
-    .cake-container { transform: scale(0.75); }
+    .cake-container { transform: scale(0.7); }
     .cake-container.cut .knife { animation: cut-knife-mobile 0.5s ease forwards; }
     @keyframes cut-knife-mobile {
         0% { transform: translateX(0) rotate(0deg); }
-        50% { transform: translateX(-60px) rotate(-15deg); }
+        50% { transform: translateX(-60px) rotate(-20deg); }
         100% { transform: translateX(-60px) rotate(0deg); }
     }
     .hero { padding-top: 60px; }
@@ -199,12 +200,12 @@ footer { background: var(--grey-dark); color: var(--white); padding: 25px 15px; 
 
 /* Larger Phones */
 @media (min-width: 400px) {
-    .cake-container { transform: scale(0.9); }
+    .cake-container { transform: scale(0.85); }
     .cake-container.cut .knife { animation: cut-knife-tablet 0.5s ease forwards; }
     @keyframes cut-knife-tablet {
         0% { transform: translateX(0) rotate(0deg); }
-        50% { transform: translateX(-70px) rotate(-15deg); }
-        100% { transform: translateX(-70px) rotate(0deg); }
+        50% { transform: translateX(-75px) rotate(-20deg); }
+        100% { transform: translateX(-75px) rotate(0deg); }
     }
 }
 
