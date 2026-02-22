@@ -90,7 +90,8 @@ header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; backgroun
 .cake-scene { text-align: center; padding: 0 10px; }
 .cake-container { display: inline-block; position: relative; cursor: pointer; transform: scale(0.8); transform-origin: center top; transition: transform 0.3s ease; }
 .cake-container:active { transform: scale(0.8) scale(0.95); }
-.cake-container.cut .cake { opacity: 0; visibility: hidden; }
+/* Cake stays visible - only candle flames blow out */
+.cake-container.cut .candle-flame { opacity: 0; visibility: hidden; }
 .cake-container.cut .knife { animation: cut-knife 0.5s ease forwards; }
 @keyframes cut-knife {
     0% { transform: translateX(0) rotate(0deg); }
